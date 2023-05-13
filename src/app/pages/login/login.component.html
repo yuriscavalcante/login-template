@@ -1,6 +1,70 @@
-<p-card header="Title">
-    <p class="m-0">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-        quas!
-    </p>
-</p-card>
+<div class="main">
+  <form *ngIf="!isCad" [formGroup]="loginForm" (ngSubmit)="login()">
+    <p-card header="Login" [style]="{ width: 'auto', height: 'auto' }">
+      <div class="form">
+        <div class="p-inputgroup input">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-envelope"></i>
+          </span>
+          <input type="email" pInputText placeholder="Email" formControlName="email" />
+        </div>
+        <div class="p-inputgroup input">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-lock"></i>
+          </span>
+          <input type="password" pInputText placeholder="Senha" formControlName="password" />
+        </div>
+        <p-button
+          class="button"
+          [style]="{ width: '450px', height: '50px', background: 'green' }"
+          type="submit"
+          label="Entrar"
+        ></p-button>
+        <i class="label">Não tem conta?<a (click)="changeCad()"> Cadastre-se</a></i>
+      </div>
+    </p-card>
+  </form>
+  <form *ngIf="isCad" [formGroup]="registerForm">
+    <p-card header="Cadastre-se" [style]="{ width: 'auto', height: 'auto' }">
+        <div class="form">
+          <div class="p-inputgroup input">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <input pInputText placeholder="Username" formControlName="userName" />
+          </div>
+          <div class="p-inputgroup input">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-lock"></i>
+            </span>
+            <input type="password" pInputText placeholder="Senha" formControlName="password" />
+          </div>
+          <div class="p-inputgroup input">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-lock"></i>
+            </span>
+            <input type="password" pInputText placeholder="Confirme a Senha" formControlName="confirmPassword" />
+          </div>
+          <div class="p-inputgroup input">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-envelope"></i>
+            </span>
+            <input type="email" pInputText placeholder="email" formControlName="email" />
+          </div>
+          <div class="p-inputgroup input">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <input pInputText placeholder="Nome completo" formControlName="fullName" />
+          </div>
+          <p-button
+            class="button"
+            [style]="{ width: '450px', height: '50px', background: 'green' }"
+            (click)="register()"
+            label="Cadastrar"
+          ></p-button>
+          <i class="label">Já tem conta?<a (click)="changeCad()"> Logue</a></i>
+        </div>
+      </p-card>
+  </form>
+</div>
