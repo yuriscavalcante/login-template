@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { IUser } from 'src/app/interfaces/IUser';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -8,7 +10,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public isCad = false
+  public isCad = false;
+  private user: any;
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService
@@ -29,17 +32,21 @@ export class LoginComponent {
   }
 
   async login(){
-    const user = await this.auth.login(this.loginForm.value);
-    console.log(user)
+    const log = (await this.auth.login(this.loginForm.value));
+    log.subscribe(res => {
+      sessionStorage.setItem('userData' ,JSON.stringify(res))
+    })
     this.isCad = true;
-    return user;
+    return this.user;
   }
 
   async register() {
     const user = await this.auth.register(this.registerForm.value);
     this.isCad = false;
+    this.registerForm.reset();
     return user;
   }
+  
   changeCad(){
     this.isCad = !this.isCad;
   }
