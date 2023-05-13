@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/interfaces/IUser';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -12,9 +14,11 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginComponent {
   public isCad = false;
   private user: any;
+  public loading = false;
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
   ){}
     loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -32,17 +36,22 @@ export class LoginComponent {
   }
 
   async login(){
+    this.loading = true;
     const log = (await this.auth.login(this.loginForm.value));
     log.subscribe(res => {
       sessionStorage.setItem('userData' ,JSON.stringify(res))
     })
-    this.isCad = true;
+    this.loginForm.reset();
+    this.loading = false;
+    this.router.navigate(['home'])
     return this.user;
   }
 
   async register() {
+    this.loading = true;
     const user = await this.auth.register(this.registerForm.value);
     this.isCad = false;
+    this.loading = false;
     this.registerForm.reset();
     return user;
   }
@@ -50,4 +59,5 @@ export class LoginComponent {
   changeCad(){
     this.isCad = !this.isCad;
   }
+
 }

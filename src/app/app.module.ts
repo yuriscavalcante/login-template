@@ -14,9 +14,14 @@ import { environment } from 'src/environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { HomeComponent } from './pages/home/home.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { LoadingComponent } from './components/loading/loading.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, LoadingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +34,9 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     InputTextModule,
     ButtonModule,
     CarouselModule,
+    ProgressSpinnerModule,
+    ConfirmDialogModule,
+    DialogModule 
   ],
   providers: [],
   bootstrap: [AppComponent],
