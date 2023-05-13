@@ -19,9 +19,12 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { LoadingComponent } from './components/loading/loading.component';
 import { DialogModule } from 'primeng/dialog';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { MenuComponent } from './components/menu/menu.component';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, LoadingComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, LoadingComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,7 +39,9 @@ import { DialogModule } from 'primeng/dialog';
     CarouselModule,
     ProgressSpinnerModule,
     ConfirmDialogModule,
-    DialogModule 
+    DialogModule,
+    TabMenuModule,
+    MenubarModule 
   ],
   providers: [],
   bootstrap: [AppComponent],
