@@ -10,7 +10,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
 import { ReactiveFormsModule } from '@angular/forms';
-import { environment } from 'src/environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -22,6 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MenuComponent } from './components/menu/menu.component';
 import { MenubarModule } from 'primeng/menubar';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, LoadingComponent, MenuComponent],

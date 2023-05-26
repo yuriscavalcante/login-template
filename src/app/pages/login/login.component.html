@@ -1,6 +1,6 @@
 <div class="main">
   <form *ngIf="!isCad" [formGroup]="loginForm" (ngSubmit)="login()">
-    <p-card header="Login" [style]="{ width: 'auto', height: 'auto' }">
+    <p-card header="Login" [style]="{ width: '30vw', height: '100vh' }">
       <div class="form">
         <div class="p-inputgroup input">
           <span class="p-inputgroup-addon">
@@ -16,7 +16,7 @@
         </div>
         <p-button
           class="button"
-          [style]="{ width: '450px', height: '50px', background: 'green' }"
+          [style]="{ width: '30vw', height: '50px', background: 'green' }"
           type="submit"
           label="Entrar"
         ></p-button>
@@ -25,7 +25,7 @@
     </p-card>
   </form>
   <form *ngIf="isCad" [formGroup]="registerForm">
-    <p-card header="Cadastre-se" [style]="{ width: 'auto', height: 'auto' }">
+    <p-card header="Cadastre-se" [style]="{ width: '30vw', height: '100vh' }">
         <div class="form">
           <div class="p-inputgroup input">
             <span class="p-inputgroup-addon">
@@ -59,7 +59,7 @@
           </div>
           <p-button
             class="button"
-            [style]="{ width: '450px', height: '50px', background: 'green' }"
+            [style]="{ width: '30vw', height: '50px', background: 'green' }"
             (click)="register()"
             label="Cadastrar"
           ></p-button>

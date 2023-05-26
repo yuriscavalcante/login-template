@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { Observable } from 'rxjs';
-import { IUser } from 'src/app/interfaces/IUser';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({

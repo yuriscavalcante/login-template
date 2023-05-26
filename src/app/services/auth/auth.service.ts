@@ -21,9 +21,6 @@ export class AuthService {
     const newUser = await createUserWithEmailAndPassword(this.auth, userRegister.email, userRegister.password);
     delete userRegister.password;
     delete userRegister.confirmPassword;
-    Object.assign(userRegister, {
-      uid: newUser.user.uid
-    })
     return await setDoc(doc(this.userCollection, newUser.user.uid), userRegister);
   }
 
